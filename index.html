@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="./styles/index.css" rel="stylesheet">
+    <script type="module" src="scripts/logout.js"></script>
+    <script type="module" src="scripts/notes.js"></script>
+    <title>Firebase Notes App</title>
+</head>
+
+<body>
+    <span style="position: absolute; top: 0; left: 0; margin: 24px;">
+        <img src="https://github.com/user-attachments/assets/b7caf336-fea2-4a3d-9d47-87e9132f67ca"
+            alt="boolingo logo"
+            style="max-height: 72px;">
+    </span>
+
+    <!-- Notes Section -->
+    <div id="notes">
+        <p id="userEmail"></p>
+        <textarea id="noteInput" placeholder="Write your note here..."></textarea>
+        <button id="addNote">Add Note</button>
+        <div id="notesList"></div>
+        <button id="logout-button">Logout</button>
+    </div>
+
+</body>
+
+</html>

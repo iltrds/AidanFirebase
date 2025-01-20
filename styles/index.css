@@ -1,0 +1,108 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f0f0f0;
+}
+div {
+    margin: 20px;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    width: 80%;
+    max-width: 600px;
+    text-align: left;
+}
+#notes {
+    position: absolute;
+    top: 20%;
+}
+#userEmail {
+    padding-left: 20px;
+    font-weight: bold;
+}
+button {
+    background-color: #bd49fd;
+    box-shadow: 0 5px 4px rgba(190, 73, 253, 0.4);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.15s ease-in-out;
+}
+button:hover {
+    background-color:rgb(196, 86, 255);
+}
+textarea {
+    width: calc(100% - 40px); /* Account for padding and margins */
+    height: 100px;
+    padding: 10px;
+    margin: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+    clear: both;
+    margin-top: 20px;
+}
+button:active {
+    transform: translateY(2px);
+    transition: all 0.15s ease-in-out;
+}
+#notesList {
+    margin-top: 20px;
+}
+
+#logout-button {
+    display: block;
+    float: none;
+    margin: 20px 20px 0 20px;
+    background-color: #c82333;
+    box-shadow: 0 5px 4px rgba(122, 18, 28, 0.34);
+}
+
+#logout-button:hover {
+    background-color:rgb(170, 30, 44);
+}
+
+.header-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+}
+
+/* Note styles */
+.note-element {
+    margin-bottom: 15px;
+    padding: 10px;
+    background-color: #f8f9fa;
+    border-radius: 5px;
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+.note-content {
+    margin-bottom: 10px;
+}
+
+.delete-button {
+    margin-left: auto;
+    padding: 5px 10px;
+    background-color: #dc3545;
+    float: right;
+    box-shadow: 0 5px 4px rgba(122, 18, 28, 0.34);
+}
+
+.delete-button:hover {
+    background-color: #c82333;
+}
+
+#addNote {
+    margin-left: 20px;
+}
