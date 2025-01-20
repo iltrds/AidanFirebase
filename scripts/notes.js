@@ -16,23 +16,18 @@ function getCollectionName(email) {
 // Add note to Firestore
 async function addNote() {
     // 2. Check if note input is empty 
-    if (!noteInput.value.trim()) return;
+    
 
     // Add note to Firestore
     try {
         // 3. Get current user object
-        const user = auth.currentUser;
-        if (!user) return;
 
         // 4a. Get user collection object
-        const userCollection = collection(db, getCollectionName(user.email));
+
         // 4b. Add note to Firestore
-        await addDoc(userCollection, {
-            content: noteInput.value,
-            createdAt: serverTimestamp()
-        });
+        
         // 4c. Clear note input
-        noteInput.value = '';
+
     } catch (error) {
         console.error("Error adding note: ", error);
     }
@@ -55,16 +50,11 @@ async function deleteNote(docId) {
 // 5. Display notes in real-time
 function setupNotesListener() {
     // 5a. Get current user object
-    const user = auth.currentUser;
-    if (!user) return;
 
     // 6a. Get user collection object
-    const userCollection = collection(db, getCollectionName(user.email));
+
     // 6b. Get notes query object
-    const notesQuery = query(
-        userCollection,
-        orderBy("createdAt", "desc")
-    );
+    
 
     // Listen to notes query object in real-time
     onSnapshot(notesQuery, (snapshot) => {
