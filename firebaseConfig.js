@@ -8,14 +8,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/11.2.0/firebas
 // https://firebase.google.com/docs/web/setup#available-libraries
 
 // Your web app's Firebase configuration
-const firebaseConfig = {
-apiKey: "AIzaSyCqWVMmLeNKqlLMXTCvxqq4gqkaDDppI5s",
-authDomain: "boolingo-96abf.firebaseapp.com",
-projectId: "boolingo-96abf",
-storageBucket: "boolingo-96abf.firebasestorage.app",
-messagingSenderId: "414356405117",
-appId: "1:414356405117:web:617da7ba5bbf6eb4686a14"
-};
+
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
