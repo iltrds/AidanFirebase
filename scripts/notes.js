@@ -10,23 +10,34 @@ const notesList = document.getElementById('notesList');
 function getCollectionName(email) {
     // Input email: user@example.com
     // After replacement: notes_user_example_com
-    return `notes_${email.replace(/[.@]/g, '_')}`;
+    return `notes_${email.replace(/[.@]/g, '_')}`; // black wizardy i tell ya
 }
 
 // Add note to Firestore
 async function addNote() {
     // 2. Check if note input is empty 
     
+    if(!noteInput.value.trim()) return; // If there's nothing left after the trim, it's an empty note
 
     // Add note to Firestore
     try {
         // 3. Get current user object
-
+        const user = auth.currentUser;
+        if (!user) return; // If user doesn't exist
         // 4a. Get user collection object
+
+        const userCollection = collection(db, getCollectionName(user.email));
 
         // 4b. Add note to Firestore
         
+        await addDoc(userCollection, { // idk man im getting tired
+            content: noteInput.value,
+            createdAt: serverTimestamp()
+        })
+
         // 4c. Clear note input
+
+        noteInput.value = "";
 
     } catch (error) {
         console.error("Error adding note: ", error);
@@ -50,11 +61,19 @@ async function deleteNote(docId) {
 // 5. Display notes in real-time
 function setupNotesListener() {
     // 5a. Get current user object
+    const user = auth.currentUser
+    if (!user) return;
 
     // 6a. Get user collection object
 
+    const userCollection = collection(db, getCollectionName(user.email));
+
     // 6b. Get notes query object
     
+    const notesQuery = query(
+        userCollection, 
+        orderBy('createdAt', 'desc') // Time created, descending order
+    );
 
     // Listen to notes query object in real-time
     onSnapshot(notesQuery, (snapshot) => {
@@ -76,7 +95,7 @@ function setupNotesListener() {
             // Create delete button
             const deleteButton = document.createElement('button');
             deleteButton.className = 'delete-button';
-            deleteButton.textContent = '🗑️';
+            deleteButton.textContent = 'X';
             deleteButton.onclick = () => deleteNote(doc.id);
             
             // Append elements
